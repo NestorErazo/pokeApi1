@@ -1,0 +1,25 @@
+<p>Pokemones works!</p>
+<div>
+  <h2>Buscar Pokémon por ID</h2>
+  <input type="number" [(ngModel)]="searchId" (input)="filterPokemons()" placeholder="Ingresa el ID del Pokémon">
+</div>
+
+<p-table [value]="filteredPokemonList" [paginator]="true" [rows]="10" responsiveLayout="scroll">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Imágenes</th>
+      <th>Nombre</th>
+      <th>ID</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-pokemon>
+    <tr>
+      <td>
+        <img [src]="pokemon.imageUrl" alt="{{ pokemon.name }} - Sprite" width="50" height="50">
+        <img [src]="pokemon.detailedImageUrl" alt="{{ pokemon.name }} - Detallada" width="50" height="50">
+      </td>
+      <td>{{ pokemon.name }}</td>
+      <td>{{ pokemon.id }}</td>
+    </tr>
+  </ng-template>
+</p-table>
